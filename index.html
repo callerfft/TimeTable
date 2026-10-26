@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMU - Занятость аудиторий и расписание | British Management University</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-section">
+        <div class="brand-logo-badge">BMU</div>
+        <div class="brand-text">
+          <h1>British Management University</h1>
+          <div class="subtext">Навигатор аудиторий и расписание</div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="header-nav">
+        <button class="nav-tab-btn active" data-tab="rooms">
+          Кабинеты (Сетка)
+        </button>
+        <button class="nav-tab-btn" data-tab="finder">
+          Поиск свободного кабинета
+        </button>
+        <button class="nav-tab-btn" data-tab="groups">
+          По группам
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="main-container">
+    <div id="viewContent">
+      <!-- Injected by app.js -->
+    </div>
+  </main>
+
+  <!-- Detail Modal Dialog -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Информация о занятии</h3>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Закрыть">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Minimal Footer -->
+  <footer class="app-footer">
+    <div>British Management University in Tashkent &bull; Аудиторный фонд</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="timetable_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

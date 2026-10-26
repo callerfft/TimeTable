@@ -1,0 +1,39 @@
+name: Update BMU Timetable
+
+on:
+  schedule:
+    # Запуск каждый будний день в 03:00 UTC (08:00 по Ташкенту, UTC+5)
+    - cron: '0 3 * * 1-5'
+  workflow_dispatch: # Возможность запустить обновление вручную кнопкой в GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch and compile latest timetable from EduPage
+        run: |
+          python update_timetable.py
+
+      - name: Commit and push changes if updated
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add timetable_data.js timetable_raw.json
+          if git diff --staged --quiet; then
+            echo "Изменений в расписании нет. Пропускаем коммит."
+          else
+            git commit -m "chore(data): auto-update timetable from EduPage [skip ci]"
+            git push
+          fi
