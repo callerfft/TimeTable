@@ -1,7 +1,7 @@
 // State Management
 const state = {
   currentTab: 'rooms', // 'rooms' | 'finder' | 'groups'
-  selectedRoomId: '*14', // Default to Lecture Hall D201
+  selectedRoomId: '*14', // Default: Lecture Hall D201
   floorFilter: 'all',
   typeFilter: 'all',
   roomSearchQuery: '',
@@ -9,24 +9,29 @@ const state = {
   finderPeriod: 1,
   finderTypeFilter: 'all',
   finderFloorFilter: 'all',
-  selectedGroupId: '*36' // Default to 2AF1
+  selectedGroupId: '*36', // Default: 2AF1
+  
+  // Mobile enhancements
+  viewMode: window.innerWidth <= 768 ? 'day' : 'week', // 'day' | 'week'
+  selectedDayTab: 0 // 0 = Monday, ...
 };
 
-// Initialize app when DOM loads
+// Initialize app
 document.addEventListener('DOMContentLoaded', () => {
   initRealtimeDefaults();
   initEventListeners();
   renderApp();
 });
 
-// Setup initial Day/Period based on real local time
 function initRealtimeDefaults() {
   const now = new Date();
   const day = now.getDay();
   if (day >= 1 && day <= 5) {
-    state.finderDay = day - 1; // 0 = Monday
+    state.finderDay = day - 1;
+    state.selectedDayTab = day - 1;
   } else {
-    state.finderDay = 0; // Monday if weekend
+    state.finderDay = 0;
+    state.selectedDayTab = 0;
   }
 
   const hours = now.getHours();
@@ -36,10 +41,7 @@ function initRealtimeDefaults() {
   for (let p of TIMETABLE_DATA.periods) {
     const [startH, startM] = p.start.split(':').map(Number);
     const [endH, endM] = p.end.split(':').map(Number);
-    const startTotal = startH * 60 + startM;
-    const endTotal = endH * 60 + endM;
-
-    if (totalMins >= startTotal && totalMins < endTotal) {
+    if (totalMins >= startH * 60 + startM && totalMins < endH * 60 + endM) {
       state.finderPeriod = p.id;
       break;
     }
@@ -47,7 +49,6 @@ function initRealtimeDefaults() {
 }
 
 function initEventListeners() {
-  // Navigation Tabs
   document.querySelectorAll('.nav-tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
@@ -57,7 +58,6 @@ function initEventListeners() {
     });
   });
 
-  // Modal Close
   const modalClose = document.getElementById('modalCloseBtn');
   const modalOverlay = document.getElementById('modalOverlay');
   if (modalClose) {
@@ -68,6 +68,15 @@ function initEventListeners() {
       if (e.target === modalOverlay) modalOverlay.classList.remove('active');
     });
   }
+
+  // Handle window resize dynamically
+  window.addEventListener('resize', debounce(() => {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile && state.viewMode !== 'day' && !state.userExplicitMode) {
+      state.viewMode = 'day';
+      renderApp();
+    }
+  }, 250));
 }
 
 function renderApp() {
@@ -87,7 +96,6 @@ function renderApp() {
    VIEW 1: ROOM OCCUPANCY & TIMETABLE (Кабинеты)
    ========================================================================== */
 function renderRoomsView(container) {
-  // Filter rooms
   const filteredRooms = TIMETABLE_DATA.classrooms.filter(cr => {
     if (state.floorFilter !== 'all' && cr.floor !== parseInt(state.floorFilter)) return false;
     if (state.typeFilter !== 'all' && cr.type !== state.typeFilter) return false;
@@ -116,10 +124,10 @@ function renderRoomsView(container) {
       }
     }
   }
-  const totalWeeklyHours = 5 * 9;
+  const totalWeeklyHours = 45;
   const occupancyPercent = Math.round((totalOccupiedHours / totalWeeklyHours) * 100);
 
-  // Current status check
+  // Status now
   const now = new Date();
   const currentDayIdx = now.getDay() - 1;
   const currentTotalMins = now.getHours() * 60 + now.getMinutes();
@@ -140,74 +148,173 @@ function renderRoomsView(container) {
     }
   }
 
-  // Generate Table Rows with Rowspan (No duplicates!)
-  const skipUntil = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 };
-  let rowsHtml = '';
+  // Mobile Day Selector & View Mode Switcher
+  const viewBarHtml = `
+    <div class="mobile-view-bar">
+      ${state.viewMode === 'day' ? `
+        <div class="day-pills-container">
+          ${TIMETABLE_DATA.days.map((d, idx) => `
+            <button class="day-pill-btn ${idx === state.selectedDayTab ? 'active' : ''}" data-day-tab="${idx}">
+              ${d.short}
+            </button>
+          `).join('')}
+        </div>
+      ` : `<div style="font-size:12px; font-weight:600; color:var(--text-muted); padding-left:4px;">Вся неделя (5 дней)</div>`}
 
-  for (let period of TIMETABLE_DATA.periods) {
-    const pid = period.id;
-    rowsHtml += `<tr>`;
-    rowsHtml += `
-      <td class="time-cell">
-        <div class="period-num">Пара ${pid}</div>
-        <div class="period-hours">${period.start}–${period.end}</div>
-      </td>
-    `;
+      <div class="view-mode-toggle">
+        <button class="mode-btn ${state.viewMode === 'day' ? 'active' : ''}" data-set-view-mode="day">День</button>
+        <button class="mode-btn ${state.viewMode === 'week' ? 'active' : ''}" data-set-view-mode="week">Неделя</button>
+      </div>
+    </div>
+  `;
 
-    for (let day of TIMETABLE_DATA.days) {
-      const did = day.id;
-      if (pid <= skipUntil[did]) {
-        // Covered by previous period's rowspan
-        continue;
-      }
+  // Render Schedule (Day Timeline OR Week Grid)
+  let scheduleContentHtml = '';
 
-      const slot = roomSchedule[did] ? roomSchedule[did][pid] : null;
+  if (state.viewMode === 'day') {
+    // Single Day Vertical Timeline (Ideal for mobile)
+    const dayObj = TIMETABLE_DATA.days[state.selectedDayTab];
+    const daySched = roomSchedule[state.selectedDayTab] || {};
+
+    let timelineItemsHtml = '';
+    const skipPeriods = new Set();
+
+    for (let period of TIMETABLE_DATA.periods) {
+      const pid = period.id;
+      if (skipPeriods.has(pid)) continue;
+
+      const slot = daySched[pid];
       if (!slot) {
-        rowsHtml += `
-          <td>
-            <div class="slot-free" title="Свободно">
-              <span class="free-tag">Свободно</span>
+        timelineItemsHtml += `
+          <div class="timeline-item free">
+            <div class="timeline-time-col">
+              <span class="period-tag">Пара ${pid}</span>
+              <span class="hours">${period.start}–${period.end}</span>
             </div>
-          </td>
+            <div class="timeline-info-col">
+              <div class="timeline-title" style="color:var(--free-text);">Свободно</div>
+              <div class="timeline-subtitle">Аудитория доступна для занятий</div>
+            </div>
+          </div>
         `;
       } else {
         const dur = slot.duration || 1;
         if (dur > 1) {
-          skipUntil[did] = pid + dur - 1;
+          for (let sp = pid + 1; sp < pid + dur; sp++) {
+            skipPeriods.add(sp);
+          }
         }
-        const rowspanAttr = dur > 1 ? `rowspan="${dur}"` : '';
-        const groupsStr = slot.groups.join(', ');
-        const teacherStr = slot.teachers.join(', ');
 
-        rowsHtml += `
-          <td ${rowspanAttr}>
-            <div 
-              class="slot-busy"
-              data-lesson-detail='${escapeHtml(JSON.stringify(slot))}'
-              data-room-name="${escapeHtml(selectedRoom.name)}"
-              data-day-name="${escapeHtml(day.name)}"
-              data-period-str="${period.start}–${period.end}"
-              title="Нажмите для деталей"
-            >
-              <div class="busy-subject">${escapeHtml(slot.subject)}</div>
-              <div class="busy-details">
-                <div class="busy-groups">${escapeHtml(groupsStr)}</div>
-                <div class="busy-teacher">${escapeHtml(teacherStr)}</div>
-              </div>
-              <div class="busy-meta">
-                <span>${escapeHtml(slot.timeRange)}</span>
-                ${dur > 1 ? `<span>${dur} ч</span>` : ''}
+        timelineItemsHtml += `
+          <div 
+            class="timeline-item busy" 
+            data-lesson-detail='${escapeHtml(JSON.stringify(slot))}'
+            data-room-name="${escapeHtml(selectedRoom.name)}"
+            data-day-name="${escapeHtml(dayObj.name)}"
+            data-period-str="${slot.timeRange}"
+            style="cursor:pointer;"
+          >
+            <div class="timeline-time-col">
+              <span class="period-tag">${dur > 1 ? `Пары ${slot.startPeriod}-${slot.endPeriod}` : `Пара ${pid}`}</span>
+              <span class="hours">${slot.timeRange}</span>
+            </div>
+            <div class="timeline-info-col">
+              <div class="timeline-title">${escapeHtml(slot.subject)}</div>
+              <div class="timeline-subtitle">
+                <span style="color:#BFDBFE; font-weight:600;">${escapeHtml(slot.groups.join(', '))}</span> • ${escapeHtml(slot.teachers.join(', '))}
               </div>
             </div>
-          </td>
+          </div>
         `;
       }
     }
-    rowsHtml += `</tr>`;
+
+    scheduleContentHtml = `
+      <div class="mobile-timeline">
+        ${timelineItemsHtml}
+      </div>
+    `;
+  } else {
+    // 5-Day Week Grid (with Rowspan & Horizontal Scroll)
+    const skipUntil = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 };
+    let rowsHtml = '';
+
+    for (let period of TIMETABLE_DATA.periods) {
+      const pid = period.id;
+      rowsHtml += `<tr>`;
+      rowsHtml += `
+        <td class="time-cell">
+          <div class="period-num">Пара ${pid}</div>
+          <div class="period-hours">${period.start}–${period.end}</div>
+        </td>
+      `;
+
+      for (let day of TIMETABLE_DATA.days) {
+        const did = day.id;
+        if (pid <= skipUntil[did]) continue;
+
+        const slot = roomSchedule[did] ? roomSchedule[did][pid] : null;
+        if (!slot) {
+          rowsHtml += `
+            <td>
+              <div class="slot-free" title="Свободно">
+                <span class="free-tag">Свободно</span>
+              </div>
+            </td>
+          `;
+        } else {
+          const dur = slot.duration || 1;
+          if (dur > 1) {
+            skipUntil[did] = pid + dur - 1;
+          }
+          const rowspanAttr = dur > 1 ? `rowspan="${dur}"` : '';
+
+          rowsHtml += `
+            <td ${rowspanAttr}>
+              <div 
+                class="slot-busy"
+                data-lesson-detail='${escapeHtml(JSON.stringify(slot))}'
+                data-room-name="${escapeHtml(selectedRoom.name)}"
+                data-day-name="${escapeHtml(day.name)}"
+                data-period-str="${slot.timeRange}"
+                title="Нажмите для деталей"
+              >
+                <div class="busy-subject">${escapeHtml(slot.subject)}</div>
+                <div class="busy-details">
+                  <div class="busy-groups">${escapeHtml(slot.groups.join(', '))}</div>
+                  <div class="busy-teacher">${escapeHtml(slot.teachers.join(', '))}</div>
+                </div>
+                <div class="busy-meta">
+                  <span>${escapeHtml(slot.timeRange)}</span>
+                  ${dur > 1 ? `<span>${dur} ч</span>` : ''}
+                </div>
+              </div>
+            </td>
+          `;
+        }
+      }
+      rowsHtml += `</tr>`;
+    }
+
+    scheduleContentHtml = `
+      <div class="schedule-container">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th class="time-col-header">Время</th>
+              ${TIMETABLE_DATA.days.map(d => `<th>${d.name}</th>`).join('')}
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+          </tbody>
+        </table>
+      </div>
+    `;
   }
 
   let html = `
-    <!-- Compact Controls -->
+    <!-- Controls Bar -->
     <div class="controls-card">
       <div class="controls-row">
         <div class="search-filter-group">
@@ -246,9 +353,9 @@ function renderRoomsView(container) {
         </select>
       </div>
 
-      <!-- Quick Room Chips -->
+      <!-- Quick Room Chips (Scrollable) -->
       <div class="room-quick-list">
-        ${filteredRooms.slice(0, 14).map(r => `
+        ${filteredRooms.slice(0, 16).map(r => `
           <button class="room-quick-chip ${r.id === selectedRoom.id ? 'active' : ''}" data-room-id="${r.id}">
             ${escapeHtml(r.short)}
           </button>
@@ -256,7 +363,7 @@ function renderRoomsView(container) {
       </div>
     </div>
 
-    <!-- Compact Room Header -->
+    <!-- Room Header -->
     <div class="room-header-card">
       <div class="room-title-area">
         <h2>${escapeHtml(selectedRoom.name)}</h2>
@@ -268,30 +375,18 @@ function renderRoomsView(container) {
         <div class="stat-item">
           <span class="stat-label">Сейчас:</span>
           <span class="stat-value" style="color: ${isCurrentlyBusy ? '#F87171' : 'var(--free-text)'};">
-            ${isCurrentlyBusy ? `Занято (${escapeHtml(currentLessonName)})` : 'Свободно'}
+            ${isCurrentlyBusy ? `Занято` : 'Свободно'}
           </span>
         </div>
         <div class="stat-item">
           <span class="stat-label">Занятость:</span>
-          <span class="stat-value">${totalOccupiedHours} из ${totalWeeklyHours} ч (${occupancyPercent}%)</span>
+          <span class="stat-value">${totalOccupiedHours}/45 ч (${occupancyPercent}%)</span>
         </div>
       </div>
     </div>
 
-    <!-- Compact Non-overlapping Weekly Grid -->
-    <div class="schedule-container">
-      <table class="schedule-table">
-        <thead>
-          <tr>
-            <th class="time-col-header">Время</th>
-            ${TIMETABLE_DATA.days.map(d => `<th>${d.name}</th>`).join('')}
-          </tr>
-        </thead>
-        <tbody>
-          ${rowsHtml}
-        </tbody>
-      </table>
-    </div>
+    ${viewBarHtml}
+    ${scheduleContentHtml}
   `;
 
   container.innerHTML = html;
@@ -338,7 +433,25 @@ function attachRoomsViewEvents() {
     });
   });
 
-  document.querySelectorAll('.slot-busy').forEach(card => {
+  // Day Tab selection
+  document.querySelectorAll('[data-day-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.selectedDayTab = parseInt(btn.dataset.dayTab);
+      renderApp();
+    });
+  });
+
+  // View Mode selection (Day vs Week)
+  document.querySelectorAll('[data-set-view-mode]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.viewMode = btn.dataset.setViewMode;
+      state.userExplicitMode = true;
+      renderApp();
+    });
+  });
+
+  // Lesson Card click -> Modal
+  document.querySelectorAll('.slot-busy, .timeline-item.busy').forEach(card => {
     card.addEventListener('click', () => {
       const dataStr = card.getAttribute('data-lesson-detail');
       if (!dataStr) return;
@@ -542,68 +655,168 @@ function renderGroupsView(container) {
   const selectedGroup = TIMETABLE_DATA.classes.find(c => c.id === state.selectedGroupId) || TIMETABLE_DATA.classes[0];
   const groupSchedule = TIMETABLE_DATA.classSchedule[selectedGroup.id] || {};
 
-  // Generate Table with Rowspan (No duplicates!)
-  const skipUntil = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 };
-  let rowsHtml = '';
+  // View Bar
+  const viewBarHtml = `
+    <div class="mobile-view-bar">
+      ${state.viewMode === 'day' ? `
+        <div class="day-pills-container">
+          ${TIMETABLE_DATA.days.map((d, idx) => `
+            <button class="day-pill-btn ${idx === state.selectedDayTab ? 'active' : ''}" data-day-tab="${idx}">
+              ${d.short}
+            </button>
+          `).join('')}
+        </div>
+      ` : `<div style="font-size:12px; font-weight:600; color:var(--text-muted); padding-left:4px;">Вся неделя (5 дней)</div>`}
 
-  for (let period of TIMETABLE_DATA.periods) {
-    const pid = period.id;
-    rowsHtml += `<tr>`;
-    rowsHtml += `
-      <td class="time-cell">
-        <div class="period-num">Пара ${pid}</div>
-        <div class="period-hours">${period.start}–${period.end}</div>
-      </td>
-    `;
+      <div class="view-mode-toggle">
+        <button class="mode-btn ${state.viewMode === 'day' ? 'active' : ''}" data-set-view-mode="day">День</button>
+        <button class="mode-btn ${state.viewMode === 'week' ? 'active' : ''}" data-set-view-mode="week">Неделя</button>
+      </div>
+    </div>
+  `;
 
-    for (let day of TIMETABLE_DATA.days) {
-      const did = day.id;
-      if (pid <= skipUntil[did]) {
-        continue;
-      }
+  let scheduleContentHtml = '';
 
-      const slot = groupSchedule[did] ? groupSchedule[did][pid] : null;
+  if (state.viewMode === 'day') {
+    const dayObj = TIMETABLE_DATA.days[state.selectedDayTab];
+    const daySched = groupSchedule[state.selectedDayTab] || {};
+
+    let timelineItemsHtml = '';
+    const skipPeriods = new Set();
+
+    for (let period of TIMETABLE_DATA.periods) {
+      const pid = period.id;
+      if (skipPeriods.has(pid)) continue;
+
+      const slot = daySched[pid];
       if (!slot) {
-        rowsHtml += `
-          <td>
-            <div class="slot-free" style="background:rgba(255,255,255,0.02); border-color:var(--border-subtle);">
-              <span style="font-size:11px; color:var(--text-light);">—</span>
+        timelineItemsHtml += `
+          <div class="timeline-item free" style="border-left-color: var(--border-color); background: rgba(255,255,255,0.02);">
+            <div class="timeline-time-col">
+              <span class="period-tag" style="color:var(--text-light);">Пара ${pid}</span>
+              <span class="hours">${period.start}–${period.end}</span>
             </div>
-          </td>
+            <div class="timeline-info-col">
+              <div class="timeline-title" style="color:var(--text-light); font-weight:500;">Нет пары</div>
+            </div>
+          </div>
         `;
       } else {
         const dur = slot.duration || 1;
         if (dur > 1) {
-          skipUntil[did] = pid + dur - 1;
+          for (let sp = pid + 1; sp < pid + dur; sp++) {
+            skipPeriods.add(sp);
+          }
         }
-        const rowspanAttr = dur > 1 ? `rowspan="${dur}"` : '';
         const roomsStr = slot.rooms.join(', ');
         const teacherStr = slot.teachers.join(', ');
 
-        rowsHtml += `
-          <td ${rowspanAttr}>
-            <div 
-              class="slot-busy"
-              data-lesson-detail='${escapeHtml(JSON.stringify(slot))}'
-              data-room-name="${escapeHtml(roomsStr)}"
-              data-day-name="${escapeHtml(day.name)}"
-              data-period-str="${period.start}–${period.end}"
-            >
-              <div class="busy-subject">${escapeHtml(slot.subject)}</div>
-              <div class="busy-details">
-                <div class="busy-groups" style="color:#60A5FA;">Кабинет: ${escapeHtml(roomsStr)}</div>
-                <div class="busy-teacher">${escapeHtml(teacherStr)}</div>
-              </div>
-              <div class="busy-meta">
-                <span>${escapeHtml(slot.timeRange)}</span>
-                ${dur > 1 ? `<span>${dur} ч</span>` : ''}
+        timelineItemsHtml += `
+          <div 
+            class="timeline-item busy"
+            data-lesson-detail='${escapeHtml(JSON.stringify(slot))}'
+            data-room-name="${escapeHtml(roomsStr)}"
+            data-day-name="${escapeHtml(dayObj.name)}"
+            data-period-str="${slot.timeRange}"
+            style="cursor:pointer;"
+          >
+            <div class="timeline-time-col">
+              <span class="period-tag">${dur > 1 ? `Пары ${slot.startPeriod}-${slot.endPeriod}` : `Пара ${pid}`}</span>
+              <span class="hours">${slot.timeRange}</span>
+            </div>
+            <div class="timeline-info-col">
+              <div class="timeline-title">${escapeHtml(slot.subject)}</div>
+              <div class="timeline-subtitle">
+                <span style="color:#60A5FA; font-weight:600;">Кабинет: ${escapeHtml(roomsStr)}</span> • ${escapeHtml(teacherStr)}
               </div>
             </div>
-          </td>
+          </div>
         `;
       }
     }
-    rowsHtml += `</tr>`;
+
+    scheduleContentHtml = `
+      <div class="mobile-timeline">
+        ${timelineItemsHtml}
+      </div>
+    `;
+  } else {
+    const skipUntil = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 };
+    let rowsHtml = '';
+
+    for (let period of TIMETABLE_DATA.periods) {
+      const pid = period.id;
+      rowsHtml += `<tr>`;
+      rowsHtml += `
+        <td class="time-cell">
+          <div class="period-num">Пара ${pid}</div>
+          <div class="period-hours">${period.start}–${period.end}</div>
+        </td>
+      `;
+
+      for (let day of TIMETABLE_DATA.days) {
+        const did = day.id;
+        if (pid <= skipUntil[did]) continue;
+
+        const slot = groupSchedule[did] ? groupSchedule[did][pid] : null;
+        if (!slot) {
+          rowsHtml += `
+            <td>
+              <div class="slot-free" style="background:rgba(255,255,255,0.02); border-color:var(--border-subtle);">
+                <span style="font-size:11px; color:var(--text-light);">—</span>
+              </div>
+            </td>
+          `;
+        } else {
+          const dur = slot.duration || 1;
+          if (dur > 1) {
+            skipUntil[did] = pid + dur - 1;
+          }
+          const rowspanAttr = dur > 1 ? `rowspan="${dur}"` : '';
+          const roomsStr = slot.rooms.join(', ');
+          const teacherStr = slot.teachers.join(', ');
+
+          rowsHtml += `
+            <td ${rowspanAttr}>
+              <div 
+                class="slot-busy"
+                data-lesson-detail='${escapeHtml(JSON.stringify(slot))}'
+                data-room-name="${escapeHtml(roomsStr)}"
+                data-day-name="${escapeHtml(day.name)}"
+                data-period-str="${slot.timeRange}"
+              >
+                <div class="busy-subject">${escapeHtml(slot.subject)}</div>
+                <div class="busy-details">
+                  <div class="busy-groups" style="color:#60A5FA;">Кабинет: ${escapeHtml(roomsStr)}</div>
+                  <div class="busy-teacher">${escapeHtml(teacherStr)}</div>
+                </div>
+                <div class="busy-meta">
+                  <span>${escapeHtml(slot.timeRange)}</span>
+                  ${dur > 1 ? `<span>${dur} ч</span>` : ''}
+                </div>
+              </div>
+            </td>
+          `;
+        }
+      }
+      rowsHtml += `</tr>`;
+    }
+
+    scheduleContentHtml = `
+      <div class="schedule-container">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th class="time-col-header">Время</th>
+              ${TIMETABLE_DATA.days.map(d => `<th>${d.name}</th>`).join('')}
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+          </tbody>
+        </table>
+      </div>
+    `;
   }
 
   let html = `
@@ -619,25 +832,14 @@ function renderGroupsView(container) {
             `).join('')}
           </select>
         </div>
-        <div style="font-size:15px; font-weight:700; color:var(--text-main);">
+        <div style="font-size:14px; font-weight:700; color:var(--text-main);">
           Расписание: ${escapeHtml(selectedGroup.name)}
         </div>
       </div>
     </div>
 
-    <div class="schedule-container">
-      <table class="schedule-table">
-        <thead>
-          <tr>
-            <th class="time-col-header">Время</th>
-            ${TIMETABLE_DATA.days.map(d => `<th>${d.name}</th>`).join('')}
-          </tr>
-        </thead>
-        <tbody>
-          ${rowsHtml}
-        </tbody>
-      </table>
-    </div>
+    ${viewBarHtml}
+    ${scheduleContentHtml}
   `;
 
   container.innerHTML = html;
@@ -647,7 +849,22 @@ function renderGroupsView(container) {
     renderApp();
   });
 
-  document.querySelectorAll('.slot-busy').forEach(card => {
+  document.querySelectorAll('[data-day-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.selectedDayTab = parseInt(btn.dataset.dayTab);
+      renderApp();
+    });
+  });
+
+  document.querySelectorAll('[data-set-view-mode]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.viewMode = btn.dataset.setViewMode;
+      state.userExplicitMode = true;
+      renderApp();
+    });
+  });
+
+  document.querySelectorAll('.slot-busy, .timeline-item.busy').forEach(card => {
     card.addEventListener('click', () => {
       const dataStr = card.getAttribute('data-lesson-detail');
       if (!dataStr) return;
@@ -712,4 +929,16 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
 }
