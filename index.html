@@ -1,54 +1,46 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#0B0F19">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>BMU - Занятость аудиторий и расписание | British Management University</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1E40AF" />
+  <meta name="description" content="BMU Timetable — Расписание занятий British Management University" />
+  <title>BMU Timetable — Расписание занятий</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="app-header">
-    <div class="header-container">
-      <div class="brand-section">
-        <div class="brand-logo-badge">BMU</div>
-        <div class="brand-text">
-          <h1>BMU Timetable</h1>
-          <div class="subtext">Навигатор аудиторий</div>
-        </div>
+  <!-- Sticky Page Header -->
+  <header class="page-header">
+    <div class="brand-section">
+      <div class="brand-badge">BMU</div>
+      <div class="page-header-text">
+        <h1 id="page-title">BMU Timetable</h1>
+        <p id="page-subtitle">British Management University · Расписание аудиторий и групп</p>
       </div>
-
-      <!-- Navigation Tabs -->
-      <nav class="header-nav">
-        <button class="nav-tab-btn active" data-tab="rooms">
-          Кабинеты
-        </button>
-        <button class="nav-tab-btn" data-tab="finder">
-          Поиск свободных
-        </button>
-        <button class="nav-tab-btn" data-tab="groups">
-          По группам
-        </button>
-      </nav>
     </div>
+
+    <!-- Level-switch style navigation pills (replaces Primary - Secondary) -->
+    <nav class="level-switch" aria-label="Разделы расписания">
+      <button class="level-switch-btn active" data-tab="rooms">Кабинеты</button>
+      <button class="level-switch-btn" data-tab="groups">По группам</button>
+      <button class="level-switch-btn" data-tab="finder">Свободные аудитории</button>
+    </nav>
   </header>
 
   <!-- Main View Container -->
-  <main class="main-container">
-    <div id="viewContent">
-      <!-- Injected by app.js -->
-    </div>
+  <main class="board" id="viewContent">
+    <!-- Rendered dynamically by app.js -->
   </main>
 
   <!-- Detail Modal Dialog -->
-  <div class="modal-overlay" id="modalOverlay">
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-content">
       <div class="modal-header">
-        <h3>Информация о занятии</h3>
+        <h3 id="modalTitle">Информация о занятии</h3>
         <button class="modal-close-btn" id="modalCloseBtn" aria-label="Закрыть">&times;</button>
       </div>
       <div class="modal-body" id="modalBody">
@@ -57,9 +49,9 @@
     </div>
   </div>
 
-  <!-- Minimal Footer -->
-  <footer class="app-footer">
-    <div>British Management University in Tashkent &bull; Аудиторный фонд</div>
+  <!-- Page Footer -->
+  <footer class="page-footer" id="page-footer">
+    British Management University in Tashkent · BMU Timetable
   </footer>
 
   <!-- Scripts -->

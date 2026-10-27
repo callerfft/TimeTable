@@ -1,5 +1,5 @@
 """
-Скрипт синхронизации расписания BMU с портала bmutimetable.edupage.org
+Скрипт синхронизации расписания BMU с порталом bmutimetable.edupage.org
 Использование: python update_timetable.py
 """
 
@@ -28,35 +28,42 @@ def fetch_latest_timetable():
         'User-Agent': headers['User-Agent'],
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
     })
-    with opener.open(req_page) as resp:
-        html = resp.read().decode('utf-8', errors='ignore')
+    try:
+        with opener.open(req_page) as resp:
+            html = resp.read().decode('utf-8', errors='ignore')
 
-    gsh_match = re.search(r'ASC\.gsechash\s*=\s*["\']([^"\']+)["\']', html)
-    gsh = gsh_match.group(1) if gsh_match else "00000000"
+        gsh_match = re.search(r'ASC\.gsechash\s*=\s*["\']([^"\']+)["\']', html)
+        gsh = gsh_match.group(1) if gsh_match else "00000000"
 
-    # Get active timetable ID
-    ttviewer_url = f'{EDUPAGE_BASE}/timetable/server/ttviewer.js?__func=getTTViewerData'
-    body_meta = json.dumps({"__args": [None, 2026], "__gsh": gsh, "__client_redirect": None}).encode('utf-8')
-    req_meta = urllib.request.Request(ttviewer_url, data=body_meta, headers=headers)
-    
-    with opener.open(req_meta) as resp_meta:
-        meta_res = json.loads(resp_meta.read().decode('utf-8'))
-        active_tt_num = meta_res.get('r', {}).get('regular', {}).get('default_num', '7')
-        print(f"[2/3] Найдено актуальное расписание: #{active_tt_num}")
+        # Get active timetable ID
+        ttviewer_url = f'{EDUPAGE_BASE}/timetable/server/ttviewer.js?__func=getTTViewerData'
+        body_meta = json.dumps({"__args": [None, 2026], "__gsh": gsh, "__client_redirect": None}).encode('utf-8')
+        req_meta = urllib.request.Request(ttviewer_url, data=body_meta, headers=headers)
+        
+        with opener.open(req_meta) as resp_meta:
+            meta_res = json.loads(resp_meta.read().decode('utf-8'))
+            active_tt_num = meta_res.get('r', {}).get('regular', {}).get('default_num', '7')
+            print(f"[2/3] Найдено актуальное расписание: #{active_tt_num}")
 
-    # Fetch full timetable
-    regulartt_url = f'{EDUPAGE_BASE}/timetable/server/regulartt.js?__func=regularttGetData'
-    body_data = json.dumps({"__args": [None, str(active_tt_num)], "__gsh": gsh, "__client_redirect": None}).encode('utf-8')
-    req_data = urllib.request.Request(regulartt_url, data=body_data, headers=headers)
+        # Fetch full timetable
+        regulartt_url = f'{EDUPAGE_BASE}/timetable/server/regulartt.js?__func=regularttGetData'
+        body_data = json.dumps({"__args": [None, str(active_tt_num)], "__gsh": gsh, "__client_redirect": None}).encode('utf-8')
+        req_data = urllib.request.Request(regulartt_url, data=body_data, headers=headers)
 
-    with opener.open(req_data) as resp_data:
-        raw_res = resp_data.read().decode('utf-8')
-        with open('timetable_raw.json', 'w', encoding='utf-8') as f:
-            f.write(raw_res)
+        with opener.open(req_data) as resp_data:
+            raw_res = resp_data.read().decode('utf-8')
+            with open('timetable_raw.json', 'w', encoding='utf-8') as f:
+                f.write(raw_res)
+
+        raw_obj = json.loads(raw_res)
+    except Exception as e:
+        print(f"Предупреждение при запросе к EduPage ({e}). Используем локальный timetable_raw.json...")
+        with open('timetable_raw.json', 'r', encoding='utf-8') as f:
+            raw_obj = json.load(f)
 
     print("[3/3] Генерация timetable_data.js...")
-    compile_data(json.loads(raw_res))
-    print("Готово! Данные обновлены успешно.")
+    compile_data(raw_obj)
+    print("Готово! Данные успешно сохранены.")
 
 def compile_data(raw):
     tables = {t['id']: {row['id']: row for row in t['data_rows']} for t in raw['r']['dbiAccessorRes']['tables']}
@@ -88,7 +95,7 @@ def compile_data(raw):
         elif 'computer' in lower:
             return 'computer', 'Компьютерный класс'
         elif 'seminar' in lower:
-            return 'seminar', 'Семинарская аудитория'
+            return 'seminar', 'Семинарская'
         return 'other', 'Аудитория'
 
     def get_floor(name):

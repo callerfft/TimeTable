@@ -111,7 +111,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D203",
       "short": "Seminar D203",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 2,
       "color": "#808080"
     },
@@ -120,7 +120,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D204",
       "short": "Seminar D204",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 2,
       "color": "#FF6666"
     },
@@ -129,7 +129,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D205",
       "short": "Seminar D205",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 2,
       "color": "#CC0066"
     },
@@ -138,7 +138,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D206",
       "short": "Seminar D206",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 2,
       "color": "#33CCCC"
     },
@@ -147,7 +147,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D207",
       "short": "Seminar D207",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 2,
       "color": "#669900"
     },
@@ -156,7 +156,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D208",
       "short": "Seminar D208",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 2,
       "color": "#FF0066"
     },
@@ -165,7 +165,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D209",
       "short": "Seminar D209",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 2,
       "color": "#660066"
     },
@@ -174,7 +174,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D210",
       "short": "Seminar D210",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 2,
       "color": "#FF99FF"
     },
@@ -183,7 +183,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D212",
       "short": "Seminar D212",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 2,
       "color": "#808080"
     },
@@ -192,7 +192,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D213",
       "short": "Seminar D213",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 2,
       "color": "#C0FFFF"
     },
@@ -201,7 +201,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D215",
       "short": "Seminar D215",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 2,
       "color": "#80FF80"
     },
@@ -210,7 +210,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D217",
       "short": "Seminar D217",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 2,
       "color": "#808080"
     },
@@ -228,7 +228,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D302",
       "short": "Seminar D302",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 3,
       "color": "#FFFFFF"
     },
@@ -237,7 +237,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D303",
       "short": "Seminar D303",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 3,
       "color": "#CC00CC"
     },
@@ -246,7 +246,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D304",
       "short": "Seminar D304",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 3,
       "color": "#808080"
     },
@@ -255,7 +255,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D306",
       "short": "Seminar D306",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 3,
       "color": "#FF0000"
     },
@@ -264,7 +264,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D307",
       "short": "Seminar D307",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 3,
       "color": "#CCFF66"
     },
@@ -273,7 +273,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D308",
       "short": "Seminar D308",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 3,
       "color": "#FF9900"
     },
@@ -300,7 +300,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D403",
       "short": "Seminar D403",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#CC66FF"
     },
@@ -309,7 +309,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D404",
       "short": "Seminar D404",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#003300"
     },
@@ -318,7 +318,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D405",
       "short": "Seminar D405",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#33CCCC"
     },
@@ -327,7 +327,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D406",
       "short": "Seminar D406",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#66FFFF"
     },
@@ -336,7 +336,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D407",
       "short": "Seminar D407",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#33CCCC"
     },
@@ -345,7 +345,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D408",
       "short": "Seminar D408",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#CC3399"
     },
@@ -354,7 +354,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D409",
       "short": "Seminar D409",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#DDFF97"
     },
@@ -363,7 +363,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D410",
       "short": "Seminar D410",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#FFFF00"
     },
@@ -372,7 +372,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D412",
       "short": "Seminar D412",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#00FF00"
     },
@@ -381,7 +381,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D413",
       "short": "Seminar D413",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#9900CC"
     },
@@ -390,7 +390,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D414",
       "short": "Seminar D414",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#FFC030"
     },
@@ -399,7 +399,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D415",
       "short": "Seminar D415",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#CCFF66"
     },
@@ -408,7 +408,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D416",
       "short": "Seminar D416",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#FFFF00"
     },
@@ -417,7 +417,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D417",
       "short": "Seminar D417",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#33CCFF"
     },
@@ -426,7 +426,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D418",
       "short": "Seminar D418",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 4,
       "color": "#FFCCFF"
     },
@@ -444,7 +444,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D501",
       "short": "Seminar D501",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 5,
       "color": "#0066FF"
     },
@@ -453,7 +453,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D502",
       "short": "Seminar D502",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 5,
       "color": "#800080"
     },
@@ -462,7 +462,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D503",
       "short": "Seminar D503",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 5,
       "color": "#80FF80"
     },
@@ -471,7 +471,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D504",
       "short": "Seminar D504",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 5,
       "color": "#808080"
     },
@@ -480,7 +480,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D506",
       "short": "Seminar D506",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 5,
       "color": "#3333FF"
     },
@@ -489,7 +489,7 @@ const TIMETABLE_DATA = {
       "name": "Seminar D507",
       "short": "Seminar D507",
       "type": "seminar",
-      "typeLabel": "Семинарская аудитория",
+      "typeLabel": "Семинарская",
       "floor": 5,
       "color": "#CC99FF"
     }
