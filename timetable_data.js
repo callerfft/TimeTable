@@ -7612,7 +7612,7 @@ const TIMETABLE_DATA = {
           "lessonId": "*280",
           "subject": "Introduction to Business and Management I",
           "teachers": [
-            "Zafar.G"
+            "Rano.N"
           ],
           "groups": [
             "F314"
@@ -7631,7 +7631,7 @@ const TIMETABLE_DATA = {
           "lessonId": "*280",
           "subject": "Introduction to Business and Management I",
           "teachers": [
-            "Zafar.G"
+            "Rano.N"
           ],
           "groups": [
             "F314"
@@ -13283,7 +13283,7 @@ const TIMETABLE_DATA = {
           "lessonId": "*145",
           "subject": "Introduction to Business and Management I",
           "teachers": [
-            "Zafar.G"
+            "Rano.N"
           ],
           "groups": [
             "F313"
@@ -13302,7 +13302,7 @@ const TIMETABLE_DATA = {
           "lessonId": "*145",
           "subject": "Introduction to Business and Management I",
           "teachers": [
-            "Zafar.G"
+            "Rano.N"
           ],
           "groups": [
             "F313"
@@ -13856,7 +13856,7 @@ const TIMETABLE_DATA = {
           "lessonId": "*88",
           "subject": "Introduction to Business and Management I",
           "teachers": [
-            "Zafar.G"
+            "Rano.N"
           ],
           "groups": [
             "F207"
@@ -13875,7 +13875,7 @@ const TIMETABLE_DATA = {
           "lessonId": "*88",
           "subject": "Introduction to Business and Management I",
           "teachers": [
-            "Zafar.G"
+            "Rano.N"
           ],
           "groups": [
             "F207"
@@ -23341,7 +23341,7 @@ const TIMETABLE_DATA = {
           "lessonId": "*88",
           "subject": "Introduction to Business and Management I",
           "teachers": [
-            "Zafar.G"
+            "Rano.N"
           ],
           "groups": [
             "F207"
@@ -23360,7 +23360,7 @@ const TIMETABLE_DATA = {
           "lessonId": "*88",
           "subject": "Introduction to Business and Management I",
           "teachers": [
-            "Zafar.G"
+            "Rano.N"
           ],
           "groups": [
             "F207"
@@ -25043,7 +25043,7 @@ const TIMETABLE_DATA = {
           "lessonId": "*145",
           "subject": "Introduction to Business and Management I",
           "teachers": [
-            "Zafar.G"
+            "Rano.N"
           ],
           "groups": [
             "F313"
@@ -25062,7 +25062,7 @@ const TIMETABLE_DATA = {
           "lessonId": "*145",
           "subject": "Introduction to Business and Management I",
           "teachers": [
-            "Zafar.G"
+            "Rano.N"
           ],
           "groups": [
             "F313"
@@ -36457,7 +36457,7 @@ const TIMETABLE_DATA = {
           "lessonId": "*280",
           "subject": "Introduction to Business and Management I",
           "teachers": [
-            "Zafar.G"
+            "Rano.N"
           ],
           "groups": [
             "F314"
@@ -36476,7 +36476,7 @@ const TIMETABLE_DATA = {
           "lessonId": "*280",
           "subject": "Introduction to Business and Management I",
           "teachers": [
-            "Zafar.G"
+            "Rano.N"
           ],
           "groups": [
             "F314"
