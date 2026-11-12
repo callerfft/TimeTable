@@ -2136,6 +2136,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "15:00 - 17:00",
           "isPrimary": false
+        },
+        "6": {
+          "cardId": "*494",
+          "lessonId": "*457",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F204"
+          ],
+          "rooms": [
+            "Seminar D204"
+          ],
+          "startPeriod": 6,
+          "endPeriod": 6,
+          "duration": 1,
+          "timeRange": "14:00 - 15:00",
+          "isPrimary": true
         }
       },
       "0": {
@@ -5347,6 +5366,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "14:00 - 16:00",
           "isPrimary": false
+        },
+        "3": {
+          "cardId": "*488",
+          "lessonId": "*451",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F311"
+          ],
+          "rooms": [
+            "Seminar D408"
+          ],
+          "startPeriod": 3,
+          "endPeriod": 3,
+          "duration": 1,
+          "timeRange": "11:00 - 12:00",
+          "isPrimary": true
         }
       },
       "3": {
@@ -6437,44 +6475,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "12:00 - 14:00",
           "isPrimary": false
-        },
-        "6": {
-          "cardId": "*493",
-          "lessonId": "*456",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F106"
-          ],
-          "rooms": [
-            "Seminar D208"
-          ],
-          "startPeriod": 6,
-          "endPeriod": 6,
-          "duration": 1,
-          "timeRange": "14:00 - 15:00",
-          "isPrimary": true
-        },
-        "7": {
-          "cardId": "*494",
-          "lessonId": "*457",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F105"
-          ],
-          "rooms": [
-            "Seminar D208"
-          ],
-          "startPeriod": 7,
-          "endPeriod": 7,
-          "duration": 1,
-          "timeRange": "15:00 - 16:00",
-          "isPrimary": true
         }
       },
       "0": {
@@ -6555,6 +6555,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "13:00 - 15:00",
           "isPrimary": false
+        },
+        "3": {
+          "cardId": "*493",
+          "lessonId": "*456",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F201"
+          ],
+          "rooms": [
+            "Seminar D208"
+          ],
+          "startPeriod": 3,
+          "endPeriod": 3,
+          "duration": 1,
+          "timeRange": "11:00 - 12:00",
+          "isPrimary": true
         }
       },
       "4": {
@@ -11146,44 +11165,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "15:00 - 17:00",
           "isPrimary": false
-        },
-        "2": {
-          "cardId": "*489",
-          "lessonId": "*452",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F104"
-          ],
-          "rooms": [
-            "Seminar D205"
-          ],
-          "startPeriod": 2,
-          "endPeriod": 2,
-          "duration": 1,
-          "timeRange": "10:00 - 11:00",
-          "isPrimary": true
-        },
-        "3": {
-          "cardId": "*490",
-          "lessonId": "*453",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F107"
-          ],
-          "rooms": [
-            "Seminar D205"
-          ],
-          "startPeriod": 3,
-          "endPeriod": 3,
-          "duration": 1,
-          "timeRange": "11:00 - 12:00",
-          "isPrimary": true
         }
       }
     },
@@ -12259,6 +12240,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "15:00 - 17:00",
           "isPrimary": false
+        },
+        "6": {
+          "cardId": "*492",
+          "lessonId": "*455",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F202"
+          ],
+          "rooms": [
+            "Seminar D217"
+          ],
+          "startPeriod": 6,
+          "endPeriod": 6,
+          "duration": 1,
+          "timeRange": "14:00 - 15:00",
+          "isPrimary": true
         }
       },
       "4": {
@@ -12299,44 +12299,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "10:00 - 12:00",
           "isPrimary": false
-        },
-        "6": {
-          "cardId": "*495",
-          "lessonId": "*458",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F102"
-          ],
-          "rooms": [
-            "Seminar D217"
-          ],
-          "startPeriod": 6,
-          "endPeriod": 6,
-          "duration": 1,
-          "timeRange": "14:00 - 15:00",
-          "isPrimary": true
-        },
-        "7": {
-          "cardId": "*496",
-          "lessonId": "*459",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F101"
-          ],
-          "rooms": [
-            "Seminar D217"
-          ],
-          "startPeriod": 7,
-          "endPeriod": 7,
-          "duration": 1,
-          "timeRange": "15:00 - 16:00",
-          "isPrimary": true
         }
       }
     },
@@ -14335,25 +14297,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "11:00 - 13:00",
           "isPrimary": false
-        },
-        "7": {
-          "cardId": "*491",
-          "lessonId": "*454",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F304"
-          ],
-          "rooms": [
-            "Seminar D215"
-          ],
-          "startPeriod": 7,
-          "endPeriod": 7,
-          "duration": 1,
-          "timeRange": "15:00 - 16:00",
-          "isPrimary": true
         }
       },
       "4": {
@@ -19629,6 +19572,103 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "13:00 - 15:00",
           "isPrimary": false
+        },
+        "2": {
+          "cardId": "*489",
+          "lessonId": "*452",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F208"
+          ],
+          "rooms": [
+            "Seminar D213"
+          ],
+          "startPeriod": 2,
+          "endPeriod": 2,
+          "duration": 1,
+          "timeRange": "10:00 - 11:00",
+          "isPrimary": true
+        },
+        "3": {
+          "cardId": "*490",
+          "lessonId": "*453",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F301"
+          ],
+          "rooms": [
+            "Seminar D213"
+          ],
+          "startPeriod": 3,
+          "endPeriod": 3,
+          "duration": 1,
+          "timeRange": "11:00 - 12:00",
+          "isPrimary": true
+        },
+        "4": {
+          "cardId": "*491",
+          "lessonId": "*454",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F206"
+          ],
+          "rooms": [
+            "Seminar D213"
+          ],
+          "startPeriod": 4,
+          "endPeriod": 4,
+          "duration": 1,
+          "timeRange": "12:00 - 13:00",
+          "isPrimary": true
+        }
+      },
+      "4": {
+        "3": {
+          "cardId": "*495",
+          "lessonId": "*458",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F207"
+          ],
+          "rooms": [
+            "Seminar D213"
+          ],
+          "startPeriod": 3,
+          "endPeriod": 3,
+          "duration": 1,
+          "timeRange": "11:00 - 12:00",
+          "isPrimary": true
+        },
+        "4": {
+          "cardId": "*496",
+          "lessonId": "*459",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F205"
+          ],
+          "rooms": [
+            "Seminar D213"
+          ],
+          "startPeriod": 4,
+          "endPeriod": 4,
+          "duration": 1,
+          "timeRange": "12:00 - 13:00",
+          "isPrimary": true
         }
       }
     },
@@ -19873,27 +19913,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "11:00 - 13:00",
           "isPrimary": false
-        }
-      },
-      "0": {
-        "6": {
-          "cardId": "*488",
-          "lessonId": "*451",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F307"
-          ],
-          "rooms": [
-            "Seminar D206"
-          ],
-          "startPeriod": 6,
-          "endPeriod": 6,
-          "duration": 1,
-          "timeRange": "14:00 - 15:00",
-          "isPrimary": true
         }
       }
     },
@@ -20262,25 +20281,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "14:00 - 16:00",
           "isPrimary": false
-        },
-        "3": {
-          "cardId": "*492",
-          "lessonId": "*455",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F103"
-          ],
-          "rooms": [
-            "Seminar D203"
-          ],
-          "startPeriod": 3,
-          "endPeriod": 3,
-          "duration": 1,
-          "timeRange": "11:00 - 12:00",
-          "isPrimary": true
         }
       }
     }
@@ -20581,25 +20581,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "12:00 - 14:00",
           "isPrimary": false
-        },
-        "7": {
-          "cardId": "*496",
-          "lessonId": "*459",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F101"
-          ],
-          "rooms": [
-            "Seminar D217"
-          ],
-          "startPeriod": 7,
-          "endPeriod": 7,
-          "duration": 1,
-          "timeRange": "15:00 - 16:00",
-          "isPrimary": true
         }
       },
       "3": {
@@ -20860,25 +20841,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "15:00 - 17:00",
           "isPrimary": false
-        },
-        "6": {
-          "cardId": "*495",
-          "lessonId": "*458",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F102"
-          ],
-          "rooms": [
-            "Seminar D217"
-          ],
-          "startPeriod": 6,
-          "endPeriod": 6,
-          "duration": 1,
-          "timeRange": "14:00 - 15:00",
-          "isPrimary": true
         }
       },
       "1": {
@@ -21371,25 +21333,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "13:00 - 15:00",
           "isPrimary": false
-        },
-        "7": {
-          "cardId": "*494",
-          "lessonId": "*457",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F105"
-          ],
-          "rooms": [
-            "Seminar D208"
-          ],
-          "startPeriod": 7,
-          "endPeriod": 7,
-          "duration": 1,
-          "timeRange": "15:00 - 16:00",
-          "isPrimary": true
         }
       },
       "3": {
@@ -21806,6 +21749,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "10:00 - 12:00",
           "isPrimary": false
+        },
+        "4": {
+          "cardId": "*491",
+          "lessonId": "*454",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F206"
+          ],
+          "rooms": [
+            "Seminar D213"
+          ],
+          "startPeriod": 4,
+          "endPeriod": 4,
+          "duration": 1,
+          "timeRange": "12:00 - 13:00",
+          "isPrimary": true
         }
       }
     },
@@ -22066,6 +22028,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "15:00 - 17:00",
           "isPrimary": false
+        },
+        "6": {
+          "cardId": "*492",
+          "lessonId": "*455",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F202"
+          ],
+          "rooms": [
+            "Seminar D217"
+          ],
+          "startPeriod": 6,
+          "endPeriod": 6,
+          "duration": 1,
+          "timeRange": "14:00 - 15:00",
+          "isPrimary": true
         }
       },
       "1": {
@@ -22364,25 +22345,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "09:00 - 11:00",
           "isPrimary": false
-        },
-        "3": {
-          "cardId": "*490",
-          "lessonId": "*453",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F107"
-          ],
-          "rooms": [
-            "Seminar D205"
-          ],
-          "startPeriod": 3,
-          "endPeriod": 3,
-          "duration": 1,
-          "timeRange": "11:00 - 12:00",
-          "isPrimary": true
         }
       },
       "3": {
@@ -22836,25 +22798,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "13:00 - 15:00",
           "isPrimary": false
-        },
-        "3": {
-          "cardId": "*492",
-          "lessonId": "*455",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F103"
-          ],
-          "rooms": [
-            "Seminar D203"
-          ],
-          "startPeriod": 3,
-          "endPeriod": 3,
-          "duration": 1,
-          "timeRange": "11:00 - 12:00",
-          "isPrimary": true
         }
       },
       "0": {
@@ -23192,6 +23135,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "13:00 - 15:00",
           "isPrimary": false
+        },
+        "3": {
+          "cardId": "*493",
+          "lessonId": "*456",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F201"
+          ],
+          "rooms": [
+            "Seminar D208"
+          ],
+          "startPeriod": 3,
+          "endPeriod": 3,
+          "duration": 1,
+          "timeRange": "11:00 - 12:00",
+          "isPrimary": true
         }
       },
       "4": {
@@ -23529,6 +23491,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "13:00 - 15:00",
           "isPrimary": false
+        },
+        "3": {
+          "cardId": "*495",
+          "lessonId": "*458",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F207"
+          ],
+          "rooms": [
+            "Seminar D213"
+          ],
+          "startPeriod": 3,
+          "endPeriod": 3,
+          "duration": 1,
+          "timeRange": "11:00 - 12:00",
+          "isPrimary": true
         }
       },
       "3": {
@@ -23866,6 +23847,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "11:00 - 13:00",
           "isPrimary": false
+        },
+        "2": {
+          "cardId": "*489",
+          "lessonId": "*452",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F208"
+          ],
+          "rooms": [
+            "Seminar D213"
+          ],
+          "startPeriod": 2,
+          "endPeriod": 2,
+          "duration": 1,
+          "timeRange": "10:00 - 11:00",
+          "isPrimary": true
         }
       },
       "4": {
@@ -24384,25 +24384,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "12:00 - 14:00",
           "isPrimary": false
-        },
-        "2": {
-          "cardId": "*489",
-          "lessonId": "*452",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F104"
-          ],
-          "rooms": [
-            "Seminar D205"
-          ],
-          "startPeriod": 2,
-          "endPeriod": 2,
-          "duration": 1,
-          "timeRange": "10:00 - 11:00",
-          "isPrimary": true
         }
       },
       "4": {
@@ -25372,25 +25353,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "16:00 - 18:00",
           "isPrimary": false
-        },
-        "7": {
-          "cardId": "*491",
-          "lessonId": "*454",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F304"
-          ],
-          "rooms": [
-            "Seminar D215"
-          ],
-          "startPeriod": 7,
-          "endPeriod": 7,
-          "duration": 1,
-          "timeRange": "15:00 - 16:00",
-          "isPrimary": true
         }
       },
       "3": {
@@ -26000,25 +25962,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "16:00 - 18:00",
           "isPrimary": false
-        },
-        "6": {
-          "cardId": "*493",
-          "lessonId": "*456",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F106"
-          ],
-          "rooms": [
-            "Seminar D208"
-          ],
-          "startPeriod": 6,
-          "endPeriod": 6,
-          "duration": 1,
-          "timeRange": "14:00 - 15:00",
-          "isPrimary": true
         }
       },
       "1": {
@@ -26795,6 +26738,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "15:00 - 17:00",
           "isPrimary": false
+        },
+        "6": {
+          "cardId": "*494",
+          "lessonId": "*457",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F204"
+          ],
+          "rooms": [
+            "Seminar D204"
+          ],
+          "startPeriod": 6,
+          "endPeriod": 6,
+          "duration": 1,
+          "timeRange": "14:00 - 15:00",
+          "isPrimary": true
         }
       },
       "4": {
@@ -27210,6 +27172,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "14:00 - 16:00",
           "isPrimary": false
+        },
+        "4": {
+          "cardId": "*496",
+          "lessonId": "*459",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F205"
+          ],
+          "rooms": [
+            "Seminar D213"
+          ],
+          "startPeriod": 4,
+          "endPeriod": 4,
+          "duration": 1,
+          "timeRange": "12:00 - 13:00",
+          "isPrimary": true
         }
       },
       "3": {
@@ -27585,6 +27566,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "09:00 - 11:00",
           "isPrimary": false
+        },
+        "3": {
+          "cardId": "*488",
+          "lessonId": "*451",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F311"
+          ],
+          "rooms": [
+            "Seminar D408"
+          ],
+          "startPeriod": 3,
+          "endPeriod": 3,
+          "duration": 1,
+          "timeRange": "11:00 - 12:00",
+          "isPrimary": true
         }
       }
     },
@@ -29749,25 +29749,6 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "12:00 - 14:00",
           "isPrimary": false
-        },
-        "6": {
-          "cardId": "*488",
-          "lessonId": "*451",
-          "subject": "Academic Skills extra",
-          "teachers": [
-            "Abdurakhmon.V"
-          ],
-          "groups": [
-            "F307"
-          ],
-          "rooms": [
-            "Seminar D206"
-          ],
-          "startPeriod": 6,
-          "endPeriod": 6,
-          "duration": 1,
-          "timeRange": "14:00 - 15:00",
-          "isPrimary": true
         }
       },
       "2": {
@@ -35661,6 +35642,25 @@ const TIMETABLE_DATA = {
           "duration": 2,
           "timeRange": "13:00 - 15:00",
           "isPrimary": false
+        },
+        "3": {
+          "cardId": "*490",
+          "lessonId": "*453",
+          "subject": "Academic Skills extra",
+          "teachers": [
+            "Abdurakhmon.V"
+          ],
+          "groups": [
+            "F301"
+          ],
+          "rooms": [
+            "Seminar D213"
+          ],
+          "startPeriod": 3,
+          "endPeriod": 3,
+          "duration": 1,
+          "timeRange": "11:00 - 12:00",
+          "isPrimary": true
         }
       },
       "4": {
