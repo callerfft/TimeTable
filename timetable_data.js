@@ -18618,6 +18618,63 @@ const TIMETABLE_DATA = {
           "timeRange": "09:00 - 11:00",
           "isPrimary": false
         },
+        "5": {
+          "cardId": "*289",
+          "lessonId": "*289",
+          "subject": "Mathematics for Finance and Business",
+          "teachers": [
+            "Daniil.O"
+          ],
+          "groups": [
+            "2AF4"
+          ],
+          "rooms": [
+            "Computer D411"
+          ],
+          "startPeriod": 5,
+          "endPeriod": 7,
+          "duration": 3,
+          "timeRange": "13:00 - 16:00",
+          "isPrimary": true
+        },
+        "6": {
+          "cardId": "*289",
+          "lessonId": "*289",
+          "subject": "Mathematics for Finance and Business",
+          "teachers": [
+            "Daniil.O"
+          ],
+          "groups": [
+            "2AF4"
+          ],
+          "rooms": [
+            "Computer D411"
+          ],
+          "startPeriod": 5,
+          "endPeriod": 7,
+          "duration": 3,
+          "timeRange": "13:00 - 16:00",
+          "isPrimary": false
+        },
+        "7": {
+          "cardId": "*289",
+          "lessonId": "*289",
+          "subject": "Mathematics for Finance and Business",
+          "teachers": [
+            "Daniil.O"
+          ],
+          "groups": [
+            "2AF4"
+          ],
+          "rooms": [
+            "Computer D411"
+          ],
+          "startPeriod": 5,
+          "endPeriod": 7,
+          "duration": 3,
+          "timeRange": "13:00 - 16:00",
+          "isPrimary": false
+        },
         "8": {
           "cardId": "*397",
           "lessonId": "*397",
@@ -19432,63 +19489,6 @@ const TIMETABLE_DATA = {
           "endPeriod": 5,
           "duration": 3,
           "timeRange": "11:00 - 14:00",
-          "isPrimary": false
-        },
-        "6": {
-          "cardId": "*289",
-          "lessonId": "*289",
-          "subject": "Mathematics for Finance and Business",
-          "teachers": [
-            "Daniil.O"
-          ],
-          "groups": [
-            "2AF4"
-          ],
-          "rooms": [
-            "Computer D305"
-          ],
-          "startPeriod": 6,
-          "endPeriod": 8,
-          "duration": 3,
-          "timeRange": "14:00 - 17:00",
-          "isPrimary": true
-        },
-        "7": {
-          "cardId": "*289",
-          "lessonId": "*289",
-          "subject": "Mathematics for Finance and Business",
-          "teachers": [
-            "Daniil.O"
-          ],
-          "groups": [
-            "2AF4"
-          ],
-          "rooms": [
-            "Computer D305"
-          ],
-          "startPeriod": 6,
-          "endPeriod": 8,
-          "duration": 3,
-          "timeRange": "14:00 - 17:00",
-          "isPrimary": false
-        },
-        "8": {
-          "cardId": "*289",
-          "lessonId": "*289",
-          "subject": "Mathematics for Finance and Business",
-          "teachers": [
-            "Daniil.O"
-          ],
-          "groups": [
-            "2AF4"
-          ],
-          "rooms": [
-            "Computer D305"
-          ],
-          "startPeriod": 6,
-          "endPeriod": 8,
-          "duration": 3,
-          "timeRange": "14:00 - 17:00",
           "isPrimary": false
         }
       },
@@ -37876,6 +37876,25 @@ const TIMETABLE_DATA = {
         }
       },
       "0": {
+        "5": {
+          "cardId": "*289",
+          "lessonId": "*289",
+          "subject": "Mathematics for Finance and Business",
+          "teachers": [
+            "Daniil.O"
+          ],
+          "groups": [
+            "2AF4"
+          ],
+          "rooms": [
+            "Computer D411"
+          ],
+          "startPeriod": 5,
+          "endPeriod": 7,
+          "duration": 3,
+          "timeRange": "13:00 - 16:00",
+          "isPrimary": true
+        },
         "6": {
           "cardId": "*289",
           "lessonId": "*289",
@@ -37887,13 +37906,13 @@ const TIMETABLE_DATA = {
             "2AF4"
           ],
           "rooms": [
-            "Computer D305"
+            "Computer D411"
           ],
-          "startPeriod": 6,
-          "endPeriod": 8,
+          "startPeriod": 5,
+          "endPeriod": 7,
           "duration": 3,
-          "timeRange": "14:00 - 17:00",
-          "isPrimary": true
+          "timeRange": "13:00 - 16:00",
+          "isPrimary": false
         },
         "7": {
           "cardId": "*289",
@@ -37906,31 +37925,12 @@ const TIMETABLE_DATA = {
             "2AF4"
           ],
           "rooms": [
-            "Computer D305"
+            "Computer D411"
           ],
-          "startPeriod": 6,
-          "endPeriod": 8,
+          "startPeriod": 5,
+          "endPeriod": 7,
           "duration": 3,
-          "timeRange": "14:00 - 17:00",
-          "isPrimary": false
-        },
-        "8": {
-          "cardId": "*289",
-          "lessonId": "*289",
-          "subject": "Mathematics for Finance and Business",
-          "teachers": [
-            "Daniil.O"
-          ],
-          "groups": [
-            "2AF4"
-          ],
-          "rooms": [
-            "Computer D305"
-          ],
-          "startPeriod": 6,
-          "endPeriod": 8,
-          "duration": 3,
-          "timeRange": "14:00 - 17:00",
+          "timeRange": "13:00 - 16:00",
           "isPrimary": false
         },
         "2": {
